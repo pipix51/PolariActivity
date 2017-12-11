@@ -25,10 +25,10 @@ from gi.repository import Gdk
 
 
 NICKNAME_USED = _(' is already in use.')
-LOST_CONNECTION = _('Lost lost conection with the server...')
-CONNECTION_ERROR = _('Error to connecting to the server... closing the socket.')
-ALERT_TITLE = _('You already have a session on this host with this channel and whit this nickname.')
-ALERT_MSG = _('Automatically is selected session you try to create.')
+LOST_CONNECTION = _('Lost conection with the server...')
+CONNECTION_ERROR = _('Error connecting to the server...closing the socket.')
+ALERT_TITLE = _('You already have a session on this host with this channel and with this nickname.')
+ALERT_MSG = _('Automatically selected session you tried to create.')
 
 COLOR_BLUE = Gdk.color_parse('#4A90D9')
 COLOR_WHITE = Gdk.color_parse('#FFFFFF')
