@@ -396,7 +396,7 @@ class SSHConnection(service.SSHService):
         """
         self.transport.sendPacket(MSG_GLOBAL_REQUEST,
                                   common.NS(request)
-                                  + (wantReply and b'\xff' or b'\x00')
+                                  + (wantReply and chr(255) or chr(0))
                                   + data)
         if wantReply:
             d = defer.Deferred()
