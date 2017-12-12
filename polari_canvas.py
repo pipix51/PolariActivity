@@ -343,7 +343,7 @@ if __name__ == "__main__":
         polari.set_screen(Screen.NEW_CHANNEL)
 
     win = Gtk.Window()
-    win.set_title(_"Polari for Sugar"))
+    win.set_title(_("Polari for Sugar"))
     win.connect("destroy", _quit)
 
     polari = PolariCanvas()
