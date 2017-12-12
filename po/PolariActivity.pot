@@ -23,6 +23,54 @@ msgstr ""
 msgid "Speak"
 msgstr ""
 
+#: client.py:31
+msgid "Error doing 'gtk3reactor.install()', may not work properly"
+msgstr ""
+
+#: client.py:78
+msgid "== Signed on!"
+msgstr "" 
+
+#: client.py:84
+msgid "== Joined: "
+msgstr ""
+
+# client.py:101
+msgid "Nickname is already in use: %s"
+msgstr ""
+
+# client.py:199
+msgid "You have been marked as being away"
+msgstr ""
+
+# client.py:203
+msgid "You are no longer marked as being away"
+msgstr ""
+
+# client.py:214
+msgid "%s changed the topic of %s to: %s"
+msgstr ""
+
+# client.py:222
+msgid "You are now identified for %s"
+msgstr ""
+
+# client.py:246
+msgid "%s puts mode %s%s to %s"
+msgstr ""
+
+# client.py:319
+msgid "Connection lost: %s"
+msgstr ""
+
+# client.py:323
+msgid "Connection failed: %s"
+msgstr ""
+
+# client.py:326
+msgid "Connecting to %s:%d"
+msgstr ""
+
 #: consts.py:49
 msgid " is already in use."
 msgstr ""
@@ -45,4 +93,44 @@ msgstr ""
 
 #: polari.py:71
 msgid "Add a channel"
+msgstr ""
+
+#: polari_canvas.py:191
+msgid "Logging in, please wait"
+msgstr ""
+
+#: polari_canvas.py:212
+msgid "You've already joined %s"
+msgstr ""
+
+#: polari_canvas.py:236
+msgid "Joined to: %s"
+msgstr ""
+
+#: polari_canvas.py:270
+msgid "%s has changed nick to %s"
+msgstr ""
+
+#: polari_canvas.py:278
+msgid "%s joined."
+msgstr ""
+
+#: polari_canvas.py:283
+msgid "%s has left."
+msgstr ""
+
+#: polari_canvas.py:291
+msgid "%s has quit. [%s]"
+msgstr ""
+
+#: polari_canvas.py:346
+msgid "Polari for Sugar"
+msgstr "" 
+
+#: polari_canvas.py:352
+msgid "Add channel"
+msgstr ""
+
+#: topic_label.py:53
+msgid "Set a topic for this channel"
 msgstr ""
