@@ -1,6 +1,6 @@
-# POT file for Music Blocks
+# POT file for PolariActivity
 # Copyright (C) 2017 Koh Pi Rong
-# This file is distributed under LGPLv3
+# This file is distributed under GPLv3
 # Koh Pi Rong <koh.pirong@dhs.sg>, 2017.
 #
 #, fuzzy
@@ -24,27 +24,22 @@ msgid "Speak"
 msgstr ""
 
 #: consts.py:49
-#: globals.py:27
 msgid " is already in use."
 msgstr ""
 
 #: consts.py:50
-#: globals.py:28
 msgid "Lost connection with the server..."
 msgstr ""
 
 #: consts.py:51
-#: globals.py:29
 msgid "Error connecting to the server...closing the socket."
 msgstr "" 
 
 #: consts.py:52
-#: globals.py:30
 msgid "You already have a session on this host with this channel and with this nickname."
 msgstr "" 
 
 #: consts.py:53
-#: globals.py:31
 msgid "Automatically selected session you tried to create."
 msgstr ""
 
