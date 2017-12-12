@@ -47,7 +47,7 @@ ICONS_DIR = os.path.join(LOCAL_PATH, "icons")
 NEW_CHANNEL_SCREEN_FONT = "20"
 
 NICKNAME_USED = _(' is already in use.')
-LOST_CONNECTION = _('Lost conection with the server...')
+LOST_CONNECTION = _('Lost connection with the server...')
 CONNECTION_ERROR = _('Error connecting to the server... closing the socket.')
 ALERT_TITLE = _('You already have a session on this host with this channel and with this nickname.')
 ALERT_MSG = _('Automatically selected session you tried to create.')
