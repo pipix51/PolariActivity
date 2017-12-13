@@ -3585,13 +3585,13 @@ class WrapClientTLSParserTests(unittest.TestCase):
         """
         reactor = object()
         endpoint = endpoints.clientFromString(
-            reactor, b'tls:\xc3\xa9xample.example.com:443'
+            reactor, b'tls:'+chr(233).encode('utf-8')+b'xample.example.com:443'
         )
         self.assertEqual(
             endpoint._wrappedEndpoint._host, b'xn--xample-9ua.example.com')
         connectionCreator = connectionCreatorFromEndpoint(reactor, endpoint)
         self.assertEqual(connectionCreator._hostname,
-                         u'\xe9xample.example.com')
+                         chr(233).encode('utf-8')+b'xample.example.com')
 
 
     def test_tls(self):
