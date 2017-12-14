@@ -97,7 +97,7 @@ test_domain_com = NoFileAuthority(
             dns.Record_AFSDB(subtype=1, hostname=b'afsdb.test-domain.com'),
             dns.Record_RP(mbox=b'whatever.i.dunno', txt=b'some.more.text'),
             dns.Record_WKS(b'12.54.78.12', socket.IPPROTO_TCP,
-                           b'\x12\x01\x16\xfe\xc1\x00\x01'),
+                           chr(18)+chr(1)+chr(22)+chr(254)+chr(193)+chr(0)+chr(1)),
             dns.Record_NAPTR(100, 10, b"u", b"sip+E2U",
                              b"!^.*$!sip:information@domain.tld!"),
             dns.Record_AAAA(b'AF43:5634:1294:AFCB:56AC:48EF:34C3:01FF')],
