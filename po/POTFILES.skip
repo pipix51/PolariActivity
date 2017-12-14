@@ -1,0 +1,6 @@
+# Source files we do not want to translate
+# Copyright (C) 2017 Koh Pi Rong
+# This file is distributed under GPLv3
+# Koh Pi Rong <koh.pirong@dhs.sg>, 2017.
+
+twisted
