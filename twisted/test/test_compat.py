@@ -847,7 +847,7 @@ class CoercedUnicodeTests(unittest.TestCase):
         """
         Byte strings with non-ASCII code points raise an exception.
         """
-        self.assertRaises(UnicodeError, _coercedUnicode, b'\xe2\x98\x83')
+        self.assertRaises(UnicodeError, _coercedUnicode, chr(226)+chr(152)+chr(131))
     if _PY3:
         test_bytesNonASCII.skip = (
             "Bytes behavior of _coercedUnicode only provided on Python 2.")
