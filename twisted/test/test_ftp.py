@@ -991,7 +991,7 @@ class FTPServerPasvDataConnectionTests(FTPServerTestCase):
             "NLST",
             (u'my resum\xe9', (
                 0, 1, filepath.Permissions(0o777), 0, 0, 'user', 'group')),
-            'my resum\xc3\xa9\r\n')
+            'my resum'+chr(195)+chr(169)+'\r\n')
 
 
     def test_NLSTNonASCIIBytes(self):
