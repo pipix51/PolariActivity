@@ -229,7 +229,7 @@ class Tunnel(object):
         # TAP devices also include ethernet framing.
         if self.tunnelMode & TunnelFlags.IFF_TAP.value:
             datagram = _ethernet(
-                src=b'\x00' * 6, dst=b'\xff' * 6, protocol=_IPv4,
+                src=chr(0) * 6, dst=chr(255) * 6, protocol=_IPv4,
                 payload=datagram)
 
         self.readBuffer.append(datagram)
