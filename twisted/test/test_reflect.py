@@ -559,7 +559,7 @@ class SafeStrTests(TestCase):
         L{safe_str} for C{bytes} with utf-8 encoded data should return
         the value decoded into C{str}.
         """
-        x = b't\xc3\xbcst'
+        x = b't'+chr(195)+chr(188)+'st'
         self.assertEqual(reflect.safe_str(x), x.decode('utf-8'))
 
     if _PY3:
