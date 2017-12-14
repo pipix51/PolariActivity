@@ -577,7 +577,7 @@ class SafeStrTests(TestCase):
         """
         Use str() for non-utf8 bytes: "b'non-utf8'"
         """
-        x = b'\xff'
+        x = chr(255)
         xStr = reflect.safe_str(x)
         self.assertEqual(xStr, str(x))
 
