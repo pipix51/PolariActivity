@@ -2085,7 +2085,7 @@ class UnicodeFilePathTests(TestCase):
         """
         fp = filepath.FilePath(u"\u2603")
         newfp = fp.asBytesMode(encoding="utf-8")
-        self.assertIn(b"\xe2\x98\x83", newfp.path)
+        self.assertIn(chr(226)+chr(152)+chr(131), newfp.path)
 
 
     def test_asTextModeFromBytesWithEncoding(self):
@@ -2093,7 +2093,7 @@ class UnicodeFilePathTests(TestCase):
         C{asTextMode} with an C{encoding} argument uses that encoding when
         coercing the L{bytes}-mode L{FilePath} to a L{unicode}-mode L{FilePath}.
         """
-        fp = filepath.FilePath(b'\xe2\x98\x83')
+        fp = filepath.FilePath(chr(226)+chr(152)+chr(131))
         newfp = fp.asTextMode(encoding="utf-8")
         self.assertIn(u"\u2603", newfp.path)
 
