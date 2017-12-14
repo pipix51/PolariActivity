@@ -896,7 +896,7 @@ class FTPServerPasvDataConnectionTests(FTPServerTestCase):
             ('my resum\xc3\xa9', (
                 0, 1, filepath.Permissions(0o777), 0, 0, 'user', 'group')),
             'drwxrwxrwx   0 user      group                   '
-            '0 Jan 01  1970 my resum\xc3\xa9\r\n')
+            '0 Jan 01  1970 my resum'+chr(195)+chr(169)+'\r\n')
 
 
     def testManyLargeDownloads(self):
