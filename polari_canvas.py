@@ -267,7 +267,7 @@ class PolariCanvas(Gtk.VBox):
         for channel in self.chat_box.channels:
             nicknames = self.chat_box.nicks[channel]
             if old_nick in nicknames:
-                self.chat_box.add_system_message(channel, _("%s has changed nick to %s") % (old_nick, new_nick))
+                self.chat_box.add_system_message(channel, _("{old_nick} has changed nick to {new_nick}").format(old_nick, new_nick))
                 self.chat_box.remove_nickname(channel, old_nick)
                 self.chat_box.add_nickname(channel, new_nick)
 
@@ -275,12 +275,12 @@ class PolariCanvas(Gtk.VBox):
                     self.chat_box.set_nickname(new_nick)
 
     def _user_joined(self, factory, channel, nickname):
-        self.chat_box.add_system_message(channel, _("%s joined.") % nickname)
+        self.chat_box.add_system_message(channel, _("{nickname} joined.").format(nickname=nickname))
         self.chat_box.add_nickname(channel, nickname)
         self.afk_manager.start_counting(nickname, restart=False)
 
     def _user_left(self, factory, channel, nickname):
-        self.chat_box.add_system_message(channel, _("%s has left.") % nickname)
+        self.chat_box.add_system_message(channel, _("{nickname} has left.").format(nickname=nickname))
         self.chat_box.remove_nickname(channel, nickname)
         self.afk_manager.remove_nickname(nickname)
 
@@ -288,7 +288,7 @@ class PolariCanvas(Gtk.VBox):
         for channel in self.chat_box.channels:
             nicknames = self.chat_box.nicks[channel]
             if nickname in nicknames:
-                self.chat_box.add_system_message(channel, _("%s has quit. [%s]") % (nickname, message))
+                self.chat_box.add_system_message(channel, _("{nickname} has quit. {message}").format(nickname=nickname, message=message))
 
         self.chat_box.remove_nickname_from_all_channels(nickname)
         self.afk_manager.remove_nickname(nickname)
@@ -312,7 +312,7 @@ class PolariCanvas(Gtk.VBox):
             self.afk_manager.start_counting(nickname, restart=False)
 
     def _me_command(self, factory, channel, nickname, message):
-        self.chat_box.add_system_message(channel, " * %s %s" % (nickname, message))
+        self.chat_box.add_system_message(channel, _(" * {nickname} {message}").format(nickname=nickname, message=message))
 
     def _status_message(self, factory, message):
         self.chat_box.add_system_message(STATUS_CHANNEL, message)
