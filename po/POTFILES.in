@@ -1,0 +1,11 @@
+# List of source files containing translatable strings.
+# Copyright (C) 2017 Koh Pi Rong
+# This file is distributed under GPLv3
+# Koh Pi Rong <koh.pirong@dhs.sg>, 2017.
+
+chat_box.py
+client.py
+consts.py
+polari.py
+polari_canvas.py
+topic_label.py
