@@ -200,7 +200,7 @@ class HAProxyWrappingFactoryV2Tests(unittest.TestCase):
         # 127.0.0.1 for source and destination
         b'\x7F\x00\x00\x01\x7F\x00\x00\x01'
         # 8080 for source 8888 for destination
-        b'\x1F\x90\x22\xB8'
+        chr(31)+chr(144)+chr(34)+chr(184)
     )
     IPV6HEADER = (
         # V2 Signature
@@ -215,7 +215,7 @@ class HAProxyWrappingFactoryV2Tests(unittest.TestCase):
         b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01'
         b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01'
         # 8080 for source 8888 for destination
-        b'\x1F\x90\x22\xB8'
+        chr(31)+chr(144)+chr(34)+chr(184)
     )
 
     _SOCK_PATH = (
