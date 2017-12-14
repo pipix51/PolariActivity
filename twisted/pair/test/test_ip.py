@@ -51,14 +51,14 @@ class IPTests(unittest.TestCase):
             ])
         proto.addProto(0x0F, p1)
 
-        proto.datagramReceived(b"\x54" #ihl version
-                               + b"\x07" #tos
-                               + b"\x00\x1a" #tot_len
-                               + b"\xDE\xAD" #id
-                               + b"\xBE\xEF" #frag_off
-                               + b"\xC0" #ttl
-                               + b"\x0F" #protocol
-                               + b"FE" #checksum
+        proto.datagramReceived(chr(84) #ihl version
+                               + chr(07) #tos
+                               + chr(0)+chr(26) #tot_len
+                               + chr(222)+chr(173) #id
+                               + chr(190)+chr(239) #frag_off
+                               + chr(192) #ttl
+                               + chr(15) #protocol
+                               + chr(254) #checksum
                                + b"\x05\x06\x07\x08"
                                + b"\x01\x02\x03\x04"
                                + b"foobar",
@@ -109,14 +109,14 @@ class IPTests(unittest.TestCase):
 
             ])
         proto.addProto(0x0F, p1)
-        proto.datagramReceived(b"\x54" #ihl version
-                               + b"\x07" #tos
-                               + b"\x00\x1a" #tot_len
-                               + b"\xDE\xAD" #id
-                               + b"\xBE\xEF" #frag_off
-                               + b"\xC0" #ttl
-                               + b"\x0F" #protocol
-                               + b"FE" #checksum
+        proto.datagramReceived(chr(84) #ihl version
+                               + chr(07) #tos
+                               + chr(0)+chr(26) #tot_len
+                               + chr(222)+chr(173) #id
+                               + chr(190)+chr(239) #frag_off
+                               + chr(192) #ttl
+                               + chr(15) #protocol
+                               + chr(254) #checksum
                                + b"\x05\x06\x07\x08"
                                + b"\x01\x02\x03\x04"
                                + b"foobar",
@@ -125,14 +125,14 @@ class IPTests(unittest.TestCase):
                                source='dummy',
                                protocol='dummy',
                                )
-        proto.datagramReceived(b"\x54" #ihl version
-                               + b"\x07" #tos
-                               + b"\x00\x1a" #tot_len
-                               + b"\xDE\xAD" #id
-                               + b"\xBE\xEF" #frag_off
-                               + b"\xC0" #ttl
-                               + b"\x0F" #protocol
-                               + b"FE" #checksum
+        proto.datagramReceived(chr(84) #ihl version
+                               + chr(07) #tos
+                               + chr(0)+chr(26) #tot_len
+                               + chr(222)+chr(173) #id
+                               + chr(190)+chr(239) #frag_off
+                               + chr(192) #ttl
+                               + chr(15) #protocol
+                               + chr(254) #checksum
                                + b"\x06\x07\x08\x09"
                                + b"\x05\x04\x03\x02"
                                + b"quux",
@@ -191,14 +191,14 @@ class IPTests(unittest.TestCase):
         proto.addProto(0x0F, p1)
         proto.addProto(0x0F, p2)
 
-        proto.datagramReceived(b"\x54" #ihl version
-                               + b"\x07" #tos
-                               + b"\x00\x1a" #tot_len
-                               + b"\xDE\xAD" #id
-                               + b"\xBE\xEF" #frag_off
-                               + b"\xC0" #ttl
-                               + b"\x0F" #protocol
-                               + b"FE" #checksum
+        proto.datagramReceived(chr(84) #ihl version
+                               + chr(07) #tos
+                               + chr(0)+chr(26) #tot_len
+                               + chr(222)+chr(173) #id
+                               + chr(190)+chr(239) #frag_off
+                               + chr(192) #ttl
+                               + chr(15) #protocol
+                               + chr(254) #checksum
                                + b"\x05\x06\x07\x08"
                                + b"\x01\x02\x03\x04"
                                + b"foobar",
@@ -218,14 +218,14 @@ class IPTests(unittest.TestCase):
         p1 = MyProtocol([])
         proto.addProto(1, p1)
 
-        proto.datagramReceived(b"\x54" #ihl version
-                               + b"\x07" #tos
-                               + b"\x00\x1a" #tot_len
-                               + b"\xDE\xAD" #id
-                               + b"\xBE\xEF" #frag_off
-                               + b"\xC0" #ttl
-                               + b"\x0F" #protocol
-                               + b"FE" #checksum
+        proto.datagramReceived(chr(84) #ihl version
+                               + chr(07) #tos
+                               + chr(0)+chr(26) #tot_len
+                               + chr(222)+chr(173) #id
+                               + chr(190)+chr(239) #frag_off
+                               + chr(192) #ttl
+                               + chr(15) #protocol
+                               + chr(254) #checksum
                                + b"\x05\x06\x07\x08"
                                + b"\x01\x02\x03\x04"
                                + b"foobar",
@@ -312,14 +312,14 @@ class IPTests(unittest.TestCase):
             ])
         proto.addProto(0x0A, p2)
 
-        proto.datagramReceived(b"\x54" #ihl version
-                               + b"\x07" #tos
-                               + b"\x00\x1a" #tot_len
-                               + b"\xDE\xAD" #id
-                               + b"\xBE\xEF" #frag_off
-                               + b"\xC0" #ttl
-                               + b"\x0A" #protocol
-                               + b"FE" #checksum
+        proto.datagramReceived(chr(84) #ihl version
+                               + chr(07) #tos
+                               + chr(0)+chr(26) #tot_len
+                               + chr(222)+chr(173) #id
+                               + chr(190)+chr(239) #frag_off
+                               + chr(192) #ttl
+                               + chr(15) #protocol
+                               + chr(254) #checksum
                                + b"\x06\x07\x08\x09"
                                + b"\x05\x04\x03\x02"
                                + b"quux",
@@ -328,14 +328,14 @@ class IPTests(unittest.TestCase):
                                source='dummy',
                                protocol='dummy',
                                )
-        proto.datagramReceived(b"\x54" #ihl version
-                               + b"\x07" #tos
-                               + b"\x00\x1a" #tot_len
-                               + b"\xDE\xAD" #id
-                               + b"\xBE\xEF" #frag_off
-                               + b"\xC0" #ttl
-                               + b"\x0F" #protocol
-                               + b"FE" #checksum
+        proto.datagramReceived(chr(84) #ihl version
+                               + chr(07) #tos
+                               + chr(0)+chr(26) #tot_len
+                               + chr(222)+chr(173) #id
+                               + chr(190)+chr(239) #frag_off
+                               + chr(192) #ttl
+                               + chr(15) #protocol
+                               + chr(254) #checksum
                                + b"\x05\x06\x07\x08"
                                + b"\x01\x02\x03\x04"
                                + b"foobar",
@@ -344,14 +344,14 @@ class IPTests(unittest.TestCase):
                                source='dummy',
                                protocol='dummy',
                                )
-        proto.datagramReceived(b"\x54" #ihl version
-                               + b"\x07" #tos
-                               + b"\x00\x1a" #tot_len
-                               + b"\xDE\xAD" #id
-                               + b"\xBE\xEF" #frag_off
-                               + b"\xC0" #ttl
-                               + b"\x0F" #protocol
-                               + b"FE" #checksum
+        proto.datagramReceived(chr(84) #ihl version
+                               + chr(07) #tos
+                               + chr(0)+chr(26) #tot_len
+                               + chr(222)+chr(173) #id
+                               + chr(190)+chr(239) #frag_off
+                               + chr(192) #ttl
+                               + chr(15) #protocol
+                               + chr(254) #checksum
                                + b"\x06\x07\x08\x09"
                                + b"\x05\x04\x03\x02"
                                + b"quux",
@@ -360,14 +360,14 @@ class IPTests(unittest.TestCase):
                                source='dummy',
                                protocol='dummy',
                                )
-        proto.datagramReceived(b"\x54" #ihl version
-                               + b"\x07" #tos
-                               + b"\x00\x1a" #tot_len
-                               + b"\xDE\xAD" #id
-                               + b"\xBE\xEF" #frag_off
-                               + b"\xC0" #ttl
-                               + b"\x0A" #protocol
-                               + b"FE" #checksum
+        proto.datagramReceived(chr(84) #ihl version
+                               + chr(07) #tos
+                               + chr(0)+chr(26) #tot_len
+                               + chr(222)+chr(173) #id
+                               + chr(190)+chr(239) #frag_off
+                               + chr(192) #ttl
+                               + chr(15) #protocol
+                               + chr(254) #checksum
                                + b"\x05\x06\x07\x08"
                                + b"\x01\x02\x03\x04"
                                + b"foobar",
