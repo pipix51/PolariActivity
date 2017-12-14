@@ -1826,7 +1826,7 @@ class DaemonizeTests(unittest.TestCase):
         message to C{stderr} and exits with a non-zero status code.
         """
         self.assertErrorInParentBehavior(
-            readData=b"1 Exception: \xff",
+            readData=b"1 Exception: "+chr(255),
             errorMessage=(
                 "An error has occurred: b'Exception: \\xff'\n"
                 "Please look at log file for more information.\n"
