@@ -383,7 +383,7 @@ class ServerDNSTests(unittest.TestCase):
         return self.namesTest(
             self.resolver.lookupWellKnownServices('test-domain.com'),
             [dns.Record_WKS('12.54.78.12', socket.IPPROTO_TCP,
-                            b'\x12\x01\x16\xfe\xc1\x00\x01', ttl=19283784)]
+                            chr(18)+chr(1)+chr(22)+chr(254)+chr(193)+chr(0)+chr(1), ttl=19283784)]
         )
 
 
