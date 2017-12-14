@@ -202,8 +202,8 @@ class IPv6Tests(unittest.SynchronousTestCase):
             f(chr(10)+chr(239)+chr(11)+chr(1)+chr(5)+chr(6)+chr(10)+chr(1)+chr(255)+chr(255)+chr(153)+chr(151)+chr(0)+chr(85)+chr(1)+chr(112))
 
         self.assertEqual('1.0.1.0', g('\x01\x00\x01\x00'))
-        self.assertEqual('170.85.170.85', g('\xaa\x55\xaa\x55'))
-        self.assertEqual('255.255.255.255', g('\xff\xff\xff\xff'))
+        self.assertEqual('170.85.170.85', g(chr(170)+chr(85)+chr(170)+chr(85)))
+        self.assertEqual('255.255.255.255', g(chr(255)+chr(255)+chr(255)+chr(255)))
 
         self.assertEqual('100::', f('\x01' + '\x00' * 15))
         self.assertEqual('100::1', f('\x01' + '\x00' * 14 + '\x01'))
@@ -216,20 +216,20 @@ class IPv6Tests(unittest.SynchronousTestCase):
         g = lambda a: inet_pton(socket.AF_INET, a)
 
         self.assertEqual('\x00\x00\x00\x00', g('0.0.0.0'))
-        self.assertEqual('\xff\x00\xff\x00', g('255.0.255.0'))
-        self.assertEqual('\xaa\xaa\xaa\xaa', g('170.170.170.170'))
+        self.assertEqual(chr(255)+chr(0)+chr(255)+chr(0), g('255.0.255.0'))
+        self.assertEqual(chr(170)+chr(170)+chr(170)+chr(70), g('170.170.170.170'))
 
         self.assertEqual('\x00' * 16, f('::'))
         self.assertEqual('\x00' * 16, f('0::0'))
         self.assertEqual('\x00\x01' + '\x00' * 14, f('1::'))
         self.assertEqual(
-            '\x45\xef\x76\xcb\x00\x1a\x56\xef\xaf\xeb\x0b\xac\x19\x24\xae\xae',
+            chr(69)+chr(239)+chr(118)+chr(203)+chr(0)+chr(26)+chr(86)+chr(239)+chr(175)+chr(235)+chr(11)+chr(172)+chr(25)+chr(36)+chr(174)+chr(174), 
             f('45ef:76cb:1a:56ef:afeb:bac:1924:aeae'))
 
         self.assertEqual('\x00' * 14 + '\x00\x01', f('::1'))
         self.assertEqual('\x00' * 12 + '\x01\x02\x03\x04', f('::1.2.3.4'))
         self.assertEqual(
-            '\x00\x01\x00\x02\x00\x03\x00\x04\x00\x05\x00\x06\x01\x02\x03\xff',
+            '\x00\x01\x00\x02\x00\x03\x00\x04\x00\x05\x00\x06\x01\x02\x03'+chr(255),
             f('1:2:3:4:5:6:1.2.3.255'))
 
         for badaddr in ['1:2:3:4:5:6:7:8:', ':1:2:3:4:5:6:7:8', '1::2::3',
