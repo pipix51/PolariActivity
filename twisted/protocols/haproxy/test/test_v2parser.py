@@ -16,7 +16,7 @@ V2_SIGNATURE = b'\x0D\x0A\x0D\x0A\x00\x0D\x0A\x51\x55\x49\x54\x0A'
 def _makeHeaderIPv6(sig=V2_SIGNATURE, verCom=b'\x21', famProto=b'\x21',
                     addrLength=b'\x00\x24',
                     addrs=((b'\x00' * 15) + b'\x01') * 2,
-                    ports=b'\x1F\x90\x22\xB8'):
+                    ports=chr(31)+chr(144)+chr(34)+chr(184)):
     """
     Construct a version 2 IPv6 header with custom bytes.
 
