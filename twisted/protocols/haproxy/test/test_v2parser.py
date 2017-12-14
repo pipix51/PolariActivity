@@ -51,7 +51,7 @@ def _makeHeaderIPv6(sig=V2_SIGNATURE, verCom=b'\x21', famProto=b'\x21',
 def _makeHeaderIPv4(sig=V2_SIGNATURE, verCom=b'\x21', famProto=b'\x11',
                     addrLength=b'\x00\x0C',
                     addrs=b'\x7F\x00\x00\x01\x7F\x00\x00\x01',
-                    ports=b'\x1F\x90\x22\xB8'):
+                    ports=chr(31)+chr(144)+chr(34)+chr(184)):
     """
     Construct a version 2 IPv4 header with custom bytes.
 
