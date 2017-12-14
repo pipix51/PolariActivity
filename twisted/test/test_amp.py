@@ -3302,7 +3302,7 @@ class RemoteAmpErrorTests(unittest.TestCase):
         When C{errorCode} contains non-ASCII characters, L{amp.RemoteAmpError}
         renders then as backslash-escape sequences.
         """
-        error = amp.RemoteAmpError(b"BROKEN-\xff", "Something has broken")
+        error = amp.RemoteAmpError(b"BROKEN-"+chr(255), "Something has broken")
         self.assertEqual("Code<BROKEN-\\xff>: Something has broken", str(error))
 
 
