@@ -30,10 +30,10 @@ class RawUDPTests(unittest.TestCase):
             ])
         proto.addProto(0xF00F, p1)
 
-        proto.datagramReceived(b"\x43\xA2" #source
-                               b"\xf0\x0f" #dest
-                               b"\x00\x06" #len
-                               b"\xDE\xAD" #check
+        proto.datagramReceived(chr(67)+chr(162) #source
+                               chr(240)+chr(15) #dest
+                               chr(0)+chr(6) #len
+                               chr(222)+chr(173) #check
                                b"foobar",
                                partial=0,
                                dest=b'dummy',
@@ -62,10 +62,10 @@ class RawUDPTests(unittest.TestCase):
 
             ])
         proto.addProto(0xF00F, p1)
-        proto.datagramReceived(b"\x43\xA2" #source
-                               b"\xf0\x0f" #dest
-                               b"\x00\x06" #len
-                               b"\xDE\xAD" #check
+        proto.datagramReceived(chr(67)+chr(162) #source
+                               chr(240)+chr(15) #dest
+                               chr(0)+chr(6) #len
+                               chr(222)+chr(173) #check
                                b"foobar",
                                partial=0,
                                dest=b'dummy',
@@ -81,10 +81,10 @@ class RawUDPTests(unittest.TestCase):
                                more_fragments=b'dummy',
                                ttl=b'dummy',
                                )
-        proto.datagramReceived(b"\x33\xFE" #source
-                               b"\xf0\x0f" #dest
-                               b"\x00\x05" #len
-                               b"\xDE\xAD" #check
+        proto.datagramReceived(chr(67)+chr(162) #source
+                               chr(240)+chr(15) #dest
+                               chr(0)+chr(6) #len
+                               chr(222)+chr(173) #check
                                b"quux",
                                partial=0,
                                dest=b'dummy',
