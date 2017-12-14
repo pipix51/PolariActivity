@@ -530,7 +530,7 @@ class StringTests(unittest.SynchronousTestCase):
         C{nativeString} raises a C{UnicodeError} if input bytes are not ASCII
         decodable.
         """
-        self.assertRaises(UnicodeError, nativeString, b"\xFF")
+        self.assertRaises(UnicodeError, nativeString, chr(255))
 
 
     def test_nonASCIIUnicodeToString(self):
