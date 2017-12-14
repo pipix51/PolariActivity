@@ -550,7 +550,7 @@ class SafeStrTests(TestCase):
         L{safe_str} for C{str} with utf-8 encoded data should return the
         value unchanged.
         """
-        x = b't\xc3\xbcst'
+        x = b't'+chr(195)+chr(188)+'st'
         self.assertEqual(reflect.safe_str(x), x)
 
 
