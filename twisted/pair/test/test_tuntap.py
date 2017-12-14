@@ -259,7 +259,7 @@ class TapHelper(object):
         tun = TunHelper(self.tunnelRemote, self.tunnelLocal)
         ip = tun.encapsulate(source, destination, payload)
         frame = _ethernet(
-            src=b'\x00\x00\x00\x00\x00\x00', dst=b'\xff\xff\xff\xff\xff\xff',
+            src=chr(0)+chr(0)+chr(0)+chr(0)+chr(0)+chr(0), dst=chr(255)+chr(255)+chr(255)+chr(255)+chr(255)+chr(255),
             protocol=_IPv4, payload=ip)
         if self.pi:
             # Going to send a datagram using IPv4 addressing
