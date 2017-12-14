@@ -199,8 +199,7 @@ class IPv6Tests(unittest.SynchronousTestCase):
         self.assertEqual('::1', f('\x00' * 15 + '\x01'))
         self.assertEqual(
             'aef:b01:506:1001:ffff:9997:55:170',
-            f('\x0a\xef\x0b\x01\x05\x06\x10\x01\xff\xff\x99\x97\x00\x55\x01'
-              '\x70'))
+            f(chr(10)+chr(239)+chr(11)+chr(1)+chr(5)+chr(6)+chr(10)+chr(1)+chr(255)+chr(255)+chr(153)+chr(151)+chr(0)+chr(85)+chr(1)+chr(112))
 
         self.assertEqual('1.0.1.0', g('\x01\x00\x01\x00'))
         self.assertEqual('170.85.170.85', g('\xaa\x55\xaa\x55'))
