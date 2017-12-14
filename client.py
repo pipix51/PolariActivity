@@ -211,7 +211,7 @@ class Client(irc.IRCClient, GObject.GObject):
         self.emit("topic-changed", channel, topic)
 
         if "." not in nickname:
-            self.emit("system-message", channel, _("%s changed the topic of %s to: %s") % (nickname, channel, topic))
+            self.emit("system-message", channel, _("{nickname} changed the topic of {channel} to: {topic}").format(nickname=nickname, channel=channel, topic=topic)
 
     def noticed(self, nickname, mynickname, message):
         self.emit("status-message", "== " + nickname.split("!")[0] + " " + message)
@@ -243,7 +243,7 @@ class Client(irc.IRCClient, GObject.GObject):
 
         else:
             if args[0] != None:
-                message = _("%s puts mode %s%s to %s") % (changer, "+" if set else "-", modes, args[0])
+                message = _("{changer} puts mode {plusminus}{modes} to {args}").format(changer=changer, plusminus = "+" if set else "-", modes=modes, args=args[0])
                 self.emit("system-message", channel, message)
 
         self.emit("mode-changed", channel, usertype, args[0])
@@ -316,14 +316,14 @@ class ClientFactory(protocol.ClientFactory, GObject.GObject):
                 self.client.close_channel(channel)
 
     def clientConnectionLost(self, connector, reason):
-        self.emit("system-message", ALL_CHANNELS, _("Connection lost: %s") % reason)
+        self.emit("system-message", ALL_CHANNELS, _("Connection lost: {reason}").format(reason=reason)
         connector.connect()
 
     def clientConnectionFailed(self, connector, reason):
-        self.emit("system-message", ALL_CHANNELS, _("Connection failed: %s") % reason)
+        self.emit("system-message", ALL_CHANNELS, _("Connection failed: {reason}").format(reason=reason)
 
     def start_connection(self, host, port):
-        self.emit("system-message", ALL_CHANNELS, _("Connecting to %s:%d") % (host, port))
+        self.emit("system-message", ALL_CHANNELS, _("Connecting to {host}:{port}").format(host=host, port=port)
         reactor.connectTCP(host, port, self)
         reactor.run()
 
