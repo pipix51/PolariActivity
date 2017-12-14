@@ -3,4 +3,4 @@
 # This file is distributed under GPLv3
 # Koh Pi Rong <koh.pirong@dhs.sg>, 2017.
 
-twisted
+twisted/names/test/test_dns.py
