@@ -19,5 +19,6 @@
 
 from sugar3.activity import bundlebuilder
 
+bundlebuilder.IGNORE_DIRS.append("twisted")
 bundlebuilder.start()
 
