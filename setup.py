@@ -39,7 +39,7 @@ from sugar3.bundle.activitybundle import ActivityBundle
 
 
 IGNORE_DIRS = ['twisted']
-IGNORE_FILES = []
+IGNORE_FILES = ['twisted/conch/ssh/userauth.py']
 
 
 def list_files(base_dir, ignore_dirs=None, ignore_files=None):
