@@ -92,7 +92,6 @@ class Config(object):
         self.activity_name = bundle.get_name()
         self.bundle_id = bundle.get_bundle_id()
         self.summary = bundle.get_summary()
-        self.description = bundle.get_description()
         self.bundle_name = reduce(operator.add, self.activity_name.split())
         self.bundle_root_dir = self.bundle_name + '.activity'
         self.tar_root_dir = '%s-%s' % (self.bundle_name, self.version)
