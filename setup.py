@@ -145,7 +145,8 @@ def start():
     config = bundlebuilder.Config(source_dir)
 
     try:
-        globals()['cmd_' + options.command](config, options)
+        if options.command in globals():
+            globals()['cmd_' + options.command](config, options)
     except (KeyError, IndexError):
         parser.print_help()
 
