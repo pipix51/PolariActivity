@@ -18,10 +18,6 @@
 
 from sugar3.activity import bundlebuilder
 
-bundlebuilder.IGNORE_DIRS.append("twisted")
-bundlebuilder.IGNORE_DIRS.append("zope")
-bundlebuilder.IGNORE_DIRS.append("incremental")
-
 import argparse
 import operator
 import os
@@ -43,11 +39,15 @@ from HTMLParser import HTMLParser
 from sugar3 import env
 from sugar3.bundle.activitybundle import ActivityBundle
 
-
 IGNORE_DIRS = ['dist', '.git', 'screenshots']
 IGNORE_FILES = ['.gitignore', 'MANIFEST', '*.pyc', '*~', '*.bak', 'pseudo.po']
 
-def cmd_genpotPolari(config, options):
+# Needed In genpot_polari, Imported From Bundlebuilder
+def _po_escape(string):
+    return re.sub('([\\\\"])', '\\\\\\1', string)
+
+# Modified Version Of genpot In Bundlebuilder
+def cmd_genpot_polari(config, options):
     """Generate the gettext pot file"""
 
     os.chdir(config.source_dir)
@@ -59,16 +59,12 @@ def cmd_genpotPolari(config, options):
     python_files = []
     for root, dirs_dummy, files in os.walk(config.source_dir):
         for file_name in files:
-            for ignored in IGNORE_DIRS:
-                if ignored in file_name:
-                    continue
-            for ignored in IGNORE_FILES:
-                if ignored in file_name:
-                    continue
-            if file_name.endswith('.py'):
+            if file_name.endswith('.py') and 'twisted' not in root:
+                # Ensure Twisted Directory Is Not Translated
                 file_path = os.path.relpath(os.path.join(root, file_name),
                                             config.source_dir)
                 python_files.append(file_path)
+                
     python_files.sort()
 
     # First write out a stub .pot file containing just the translated
@@ -76,6 +72,7 @@ def cmd_genpotPolari(config, options):
     # translations into that. (We can't just append the activity name
     # to the end of the .pot file afterwards, because that might
     # create a duplicate msgid.)
+    
     pot_file = os.path.join('po', '%s.pot' % config.bundle_name)
     escaped_name = _po_escape(config.activity_name)
     f = open(pot_file, 'w')
@@ -88,18 +85,6 @@ def cmd_genpotPolari(config, options):
         f.write('msgid "%s"\n' % escaped_summary)
         f.write('msgstr ""\n')
 
-    if config.description is not None:
-        parser = HTMLParser()
-        strings = []
-        parser.handle_data = strings.append
-        parser.feed(config.description)
-
-        for s in strings:
-            s = s.strip()
-            if s:
-                f.write('#: activity/activity.info:4\n')
-                f.write('msgid "%s"\n' % _po_escape(s))
-                f.write('msgstr ""\n')
     f.close()
 
     args = ['xgettext', '--join-existing', '--language=Python',
@@ -149,13 +134,15 @@ def start():
     subparsers.add_parser("build", help="Build generated files")
     subparsers.add_parser(
         "fix_manifest", help="Add missing files to the manifest (OBSOLETE)")
-    subparsers.add_parser("genpotPolari", help="Generate the gettext pot file")
+    subparsers.add_parser("genpot_polari", help="Generate the gettext pot file")
     subparsers.add_parser("dev", help="Setup for development")
 
     options = parser.parse_args()
 
     source_dir = os.path.abspath(os.path.dirname(sys.argv[0]))
-    config = Config(source_dir)
+    
+    # Import Object From Bundlebuilder
+    config = bundlebuilder.Config(source_dir)
 
     try:
         globals()['cmd_' + options.command](config, options)
