@@ -47,7 +47,7 @@ from sugar3.bundle.activitybundle import ActivityBundle
 IGNORE_DIRS = ['dist', '.git', 'screenshots']
 IGNORE_FILES = ['.gitignore', 'MANIFEST', '*.pyc', '*~', '*.bak', 'pseudo.po']
 
-def cmd_genpot(config, options):
+def cmd_genpotPolari(config, options):
     """Generate the gettext pot file"""
 
     os.chdir(config.source_dir)
@@ -149,7 +149,7 @@ def start():
     subparsers.add_parser("build", help="Build generated files")
     subparsers.add_parser(
         "fix_manifest", help="Add missing files to the manifest (OBSOLETE)")
-    subparsers.add_parser("genpot", help="Generate the gettext pot file")
+    subparsers.add_parser("genpotPolari", help="Generate the gettext pot file")
     subparsers.add_parser("dev", help="Setup for development")
 
     options = parser.parse_args()
