@@ -95,6 +95,102 @@ def cmd_genpot_polari(config, options):
     if retcode:
         print 'ERROR - xgettext failed with return code %i.' % retcode
 
+        def cmd_check(config, options):
+    """Run tests for the activity"""
+
+    run_unit_test = True
+    run_integration_test = True
+
+    if options.choice == 'unit':
+        run_integration_test = False
+    if options.choice == 'integration':
+        run_unit_test = False
+
+    print "Running Tests"
+
+    test_path = os.path.join(config.source_dir, "tests")
+
+    if os.path.isdir(test_path):
+        unit_test_path = os.path.join(test_path, "unit")
+        integration_test_path = os.path.join(test_path, "integration")
+        sys.path.append(config.source_dir)
+
+        # Run Tests
+        if os.path.isdir(unit_test_path) and run_unit_test:
+            all_tests = unittest.defaultTestLoader.discover(unit_test_path)
+            unittest.TextTestRunner(verbosity=options.verbose).run(all_tests)
+        elif not run_unit_test:
+            print "Not running unit tests"
+        else:
+            print 'No "unit" directory found.'
+
+        if os.path.isdir(integration_test_path) and run_integration_test:
+            all_tests = unittest.defaultTestLoader.discover(
+                integration_test_path)
+            unittest.TextTestRunner(verbosity=options.verbose).run(all_tests)
+        elif not run_integration_test:
+            print "Not running integration tests"
+        else:
+            print 'No "integration" directory found.'
+
+        print "Finished testing"
+    else:
+        print "Error: No tests/ directory"
+
+
+def cmd_dev(config, options):
+    """Setup for development"""
+
+    bundle_path = env.get_user_activities_path()
+    if not os.path.isdir(bundle_path):
+        os.mkdir(bundle_path)
+    bundle_path = os.path.join(bundle_path, config.bundle_root_dir)
+    try:
+        os.symlink(config.source_dir, bundle_path)
+    except OSError:
+        if os.path.islink(bundle_path):
+            print 'ERROR - The bundle has been already setup for development.'
+        else:
+            print 'ERROR - A bundle with the same name is already installed.'
+
+
+def cmd_dist_xo(config, options):
+    """Create a xo bundle package"""
+    no_fail = False
+    if options is not None:
+        no_fail = options.no_fail
+
+    packager = XOPackager(Builder(config, no_fail))
+    packager.package()
+
+
+def cmd_fix_manifest(config, options):
+    '''Add missing files to the manifest (OBSOLETE)'''
+
+    print 'WARNING: The fix_manifest command is obsolete.'
+    print '         The MANIFEST file is no longer used in bundles,'
+    print '         please remove it.'
+
+
+def cmd_dist_source(config, options):
+    """Create a tar source package"""
+
+    packager = SourcePackager(config)
+    packager.package()
+
+
+def cmd_install(config, options):
+    """Install the activity in the system"""
+
+    installer = Installer(Builder(config))
+    installer.install(options.prefix, options.install_mime, options.install_desktop_file)
+
+def cmd_build(config, options):
+    """Build generated files"""
+
+    builder = Builder(config)
+    builder.build()
+
 def start():
     parser = argparse.ArgumentParser(prog='./setup.py')
     subparsers = parser.add_subparsers(
