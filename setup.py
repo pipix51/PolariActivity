@@ -147,6 +147,8 @@ def start():
     try:
         if options.command in globals():
             globals()['cmd_' + options.command](config, options)
+        else:
+            bundlebuilder.start()
     except (KeyError, IndexError):
         parser.print_help()
 
